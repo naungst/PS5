@@ -24,7 +24,7 @@ public class Book {
 	private String description;
 	private double Cost;
 
-	public Book(Catalog cat, String string) {
+	public Book() {
 
 	}
 
@@ -138,6 +138,7 @@ public class Book {
 
 		String basePath = new File("").getAbsolutePath();
 		basePath = basePath + "\\src\\main\\resources\\XMLFiles\\Books.xml";
+		basePath = "//Users//Noah//git//XMLExample//XMLExample//src//main//resources//XMLFiles//Books.xml";
 		File file = new File(basePath);
 
 		System.out.println(file.getAbsolutePath());

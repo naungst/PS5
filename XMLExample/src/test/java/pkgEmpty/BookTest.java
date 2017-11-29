@@ -16,16 +16,14 @@ public class BookTest {
 
 	@Test
 	public void GetBookTest() throws BookException, pkgException.BookException {
-		Catalog cat = pkgLibrary.Book.ReadXMLFile();
-		Book Donavan = new Book(cat, "bk102");
-		assertEquals("Oberon's Legacy",Donavan.getTitle());
+		Book McNabb = Book.GetBook("bk104");
+		assertEquals("Oberon's Legacy", McNabb.getTitle());
 	}
 	
 	@Test(expected = BookException.class)
 	public void GetBookTestException() throws BookException, pkgException.BookException {
-		Catalog cat = pkgLibrary.Book.ReadXMLFile();
-		Book McNabb = new Book(cat, "bk103");
-		assertEquals("Hamlet", McNabb.getTitle());	
+		Book McNabb = Book.GetBook("bk1");
+		assertEquals("Oberon's Legacy", McNabb.getTitle());
 	}
 	
 	@Test
@@ -33,8 +31,8 @@ public class BookTest {
 		Catalog cat = pkgLibrary.Book.ReadXMLFile();
 		cat.AddBook(new Book("bk235","author","title","genre", 76.0, new Date(2009,10,8),
 			"description", 14.00));
-		Book Westbrook = new Book(cat, "bk235");
-		assertEquals("author",Westbrook.getAuthor());
+		Book Brian = new Book();
+		assertEquals("author",Brian.getAuthor());
 	}
 		
 	@Test(expected = BookException.class)
@@ -42,7 +40,7 @@ public class BookTest {
 		Catalog cat = pkgLibrary.Book.ReadXMLFile();
 		cat.AddBook(new Book("bk236","author","title","genre", 86.0, new Date(2002,6,18),
 			"description", 27.00));
-		Book Westbrook = new Book(cat, "bk236");
+		Book Westbrook = new Book();
 		assertEquals("author",Westbrook.getAuthor());
 	}
 }
