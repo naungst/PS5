@@ -20,15 +20,15 @@ public class XMLReader {
 		cat = ReadCatalog();
 		
 		//	Increase the price of each book
-		IncreasePrice(cat,0.10);
+		//IncreasePrice(cat,0.10);
+		
+		SetCost(cat, 0.80);
 		
 		//	Write the XML file from 'cat' object
 		WriteXMLFile(cat);
 		
 	}
 
-
-	
 	
 	private static Catalog ReadCatalog() {
 		Catalog cat = ReadXMLFile();
@@ -49,11 +49,22 @@ public class XMLReader {
 		return cat;
 	}
 	
+	private static Catalog SetCost(Catalog cat, double PctOfPrice)
+	{
+		for (Book b : cat.getBooks()) {
+			double newCost = (b.getPrice() * PctOfPrice);
+			b.setCost(Math.round(newCost * 100.0) / 100.0);
+		}
+		
+		return cat;
+	}
+	
 	private static void WriteXMLFile(Catalog cat) {
 		try {
 
 			String basePath = new File("").getAbsolutePath();
 			basePath = basePath + "\\src\\main\\resources\\XMLFiles\\Books.xml";
+			basePath = "//Users//Noah//git//XMLExample//XMLExample//src//main//resources//XMLFiles//Books.xml";
 			File file = new File(basePath);
 
 			JAXBContext jaxbContext = JAXBContext.newInstance(Catalog.class);
@@ -76,6 +87,7 @@ public class XMLReader {
 
 		String basePath = new File("").getAbsolutePath();
 		basePath = basePath + "\\src\\main\\resources\\XMLFiles\\Books.xml";
+		basePath = "//Users//Noah//git//XMLExample//XMLExample//src//main//resources//XMLFiles//Books.xml";
 		File file = new File(basePath);
 
 		System.out.println(file.getAbsolutePath());
